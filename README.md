@@ -1,4 +1,4 @@
 ap-comp-sci
 ===========
 
-AP Comp Sci labs and stuff
+AP Computer Science labs and other stuff for Winston Durand.
