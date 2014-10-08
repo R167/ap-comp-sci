@@ -18,6 +18,10 @@ import java.util.List;
 public class Lab6Factors {
 
     /**
+     * Computes the factors of a number, telling you if it is prime.
+     * Does some error checking to make sure that the user enters
+     * a legit number.
+     * 
      * @param args
      */
     public static void main(String[] args) {
