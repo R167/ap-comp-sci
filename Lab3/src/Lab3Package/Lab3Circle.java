@@ -19,7 +19,7 @@ public class Lab3Circle {
 	 */
 	public static void main(String[] args) {
 		int radius = 10;
-		final double PI = Math.PI; // yes, I know how to declare constants
+		final double PI = Math.PI; // yes, I know how to declare constants :)
 		double area1 = PI * radius * radius;
 		double circumference1 = PI * radius * 2;
 
