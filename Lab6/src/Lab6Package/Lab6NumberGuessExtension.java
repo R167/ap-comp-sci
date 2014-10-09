@@ -49,10 +49,10 @@ public class Lab6NumberGuessExtension {
                         System.out.print("CORRECT! You guessed the secret number. ");
                         success = true;
                     } else if (guess < secret) {
-                        System.out.println("YourÂ guessÂ isÂ tooÂ low,Â pleaseÂ tryÂ again. " + 
+                        System.out.println("Your guess is too low, please try again. " + 
                                 "You have " + guesses + " guess(es) left.");
                     } else if (guess > secret) {
-                        System.out.println("YourÂ guessÂ isÂ tooÂ high,Â pleaseÂ tryÂ again. " + 
+                        System.out.println("Your guess is too high, please try again. " + 
                                 "You have " + guesses + " guess(es) left.");
                     } else {
                         System.out.println("You broke my program, impressive...");
@@ -141,7 +141,7 @@ public class Lab6NumberGuessExtension {
      * @return min and max in int[]
      */
     public static int[] getRange(Scanner scan, int[][] defaults) {
-        System.out.println("PleaseÂ selectÂ theÂ rangeÂ youÂ wantÂ toÂ playÂ with:");
+        System.out.println("Please select the range you want to play with:");
         for (int i=0; i < defaults.length; i++) {
             System.out.printf("%0"+(Integer.toString(defaults.length+1).length())+"d.   %d - %d\n",
                     i+1, defaults[i][0], defaults[i][1]);
