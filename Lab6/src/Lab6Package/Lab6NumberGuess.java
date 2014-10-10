@@ -37,9 +37,9 @@ public class Lab6NumberGuess {
                         System.out.print("CORRECT! You guessed the secret number. ");
                         success = true;
                     } else if (guess < secret) {
-                        System.out.println("Your guess is too low, please try again.");
+                        System.out.println("Your guess is too low, please try again.");
                     } else if (guess > secret) {
-                        System.out.println("Your guess is too high, please try again.");
+                        System.out.println("Your guess is too high, please try again.");
                     } else {
                         System.out.println("You broke my program, impressive...");
                     }
