@@ -40,7 +40,7 @@ public class Lab6WordSplitter {
             System.out.println(c);
         }
         // The Ruby code for this is much shorter
-        // print("Please enter a word: ")||STDIN.gets.chomp.tap{puts "Your split word is:"}.each_char{|c|puts c}
+        // print "Please enter a word: ";STDIN.gets.chomp.tap{puts "Your split word is:"}.each_char{|c|puts c}
         
     }
 
