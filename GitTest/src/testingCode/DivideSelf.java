@@ -13,7 +13,7 @@ public class DivideSelf {
      * @param args
      */
     public static void main(String[] args) {
-        int[] nums = {12,73,104,-8,8};
+        int[] nums = {12,73,104,-8,8,0,11,01};
         System.out.println("Val\tString\tInt");
         for (int n : nums) {
             System.out.println(n + "\t" + divideSelfStr(n) + "\t" + divideSelfInt(n));
@@ -31,18 +31,18 @@ public class DivideSelf {
         }
         return true;
     }
-    
+
     public static boolean divideSelfInt(int val) {
         int run = Math.abs(val);
         while (true) {
-          int digit = run % 10;
-          run /= 10;
-          if (digit == 0 || val % digit != 0) {
-            return false;
-          } else if (run == 0) {
-            return true;
-          }
+            int digit = run % 10;
+            run /= 10;
+            if (digit == 0 || val % digit != 0) {
+                return false;
+            } else if (run == 0) {
+                return true;
+            }
         }
-      }
+    }
 
 }
