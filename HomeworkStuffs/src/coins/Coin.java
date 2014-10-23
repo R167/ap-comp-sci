@@ -14,7 +14,7 @@ package coins;
 public class Coin {
     private static final int HEADS = 0;
     
-    private int face = 0;
+    protected int face = 0;
     
     public Coin() {
         flip();
