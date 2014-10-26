@@ -21,7 +21,7 @@ public class Stars {
      * @param args
      */
     public static void main(String[] args) {
-        int starCount = 3;
+        int starCount = 9;
         try {
             System.out.println("a).\n" + triangleLeftDown(starCount));
             System.out.println("\nb).\n" + triangleRightUp(starCount));
