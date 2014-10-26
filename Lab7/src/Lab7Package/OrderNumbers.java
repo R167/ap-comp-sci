@@ -19,7 +19,9 @@ import java.util.Scanner;
 public class OrderNumbers {
 
     /**
-     * @param args
+     * Asks the user to enter a list of numbers and then sorts said numbers
+     * 
+     * @param args ignored
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

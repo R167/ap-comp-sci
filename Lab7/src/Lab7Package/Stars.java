@@ -11,14 +11,14 @@ import java.util.Arrays;
 /**
  * Creates the triangles from the 3.12 programming project
  * 
- * @author wmd
+ * @author Winston Durand
  */
 public class Stars {
 
     /**
      * Creates all the triangle configurations for programming problem 3.12
      * 
-     * @param args
+     * @param args ignored
      */
     public static void main(String[] args) {
         int starCount = 9;
