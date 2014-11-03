@@ -6,27 +6,22 @@ public class Table {
      */
     private int numSeatsAvailable = 4;
     private int numSeatedCustomers;
-    private boolean tableEmpty;
+    private boolean tableEmpty = true;
     private Tab tableTab;
-
-    /*
-     * MemberFunctions
-     */
-
-
-    //TODO: implement the following functions. 
-
-    //Restaurant Constructor
-    //create new objects for table1, table2, table3
-    //set each of the tables to Empty
-    //initialize numTableAvailable
-
-    //getIsTableEmpty()
-    //return boolean true if table is empty, else false
-
-    //setTableEmpty()
-
-    //setTableOccupied(int customers)
+    
+    
+    public boolean isTableEmpty() {
+        return tableEmpty;
+    }
+    
+    public void setTableEmpty() {
+        this.tableEmpty = true;
+    }
+    
+    public void setTableOccupied(int customers) {
+        this.tableEmpty = false;
+        this.numSeatedCustomers = customers;
+    }
 
     //addOrderToTable(String itemName, double price)
 
