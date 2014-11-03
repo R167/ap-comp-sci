@@ -44,9 +44,9 @@ public class Restaurant {
                     } else if (userInput == 4) {
                         // call function to calculate the check for customer
                     } else if (userInput == 5) {
-                        // call function to set a table as empty
+                        
                     } else if (userInput == 6) {
-                        // call function to get a list of empty tables
+                        System.out.println("Empty Tables: " + getTablesAvailable());
                     }
                 } catch (java.util.InputMismatchException err) {
                     System.out.println("Invalid input!");
@@ -88,10 +88,23 @@ public class Restaurant {
 
     // getTablesAvailable()
     // return a string with the names of the tables that are empty.
+    private String getTablesAvailable() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 1; i <= 3; i++) {
+            if (tableByNumber(i).isTableEmpty()) str.append("Table " + i + ", ");
+        }
+        return str.toString().replace(", $", "").replace("^$", "There are no empty tables.");
+    }
 
     // addOrderToTable(int tableNum, String itemName, double price)
+    private void addOrderToTable(int tableNum, String itemName, double price) {
+        tableByNumber(tableNum).addOrderToTable(itemName, price);
+    }
 
     // displayTableOrders(int tableNum) - void
+    private void displayTableOrders(int tableNum) {
+        tableByNumber(tableNum).displayTableOrders();
+    }
 
     // getTabTotalForTable(int tableNum)
 

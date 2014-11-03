@@ -7,7 +7,7 @@ public class Table {
     private int numSeatsAvailable = 4;
     private int numSeatedCustomers;
     private boolean tableEmpty = true;
-    private Tab tableTab;
+    private Tab tableTab = new Tab();
     
     
     public boolean isTableEmpty() {
@@ -24,10 +24,19 @@ public class Table {
     }
 
     //addOrderToTable(String itemName, double price)
+    public void addOrderToTable(String itemName, double price) {
+        tableTab.orderItem(itemName, price);
+    }
 
     //displayTableOrders()
+    public void displayTableOrders() {
+        tableTab.displayOrders();
+    }
 
     //getTabTotal() - return string of what tab looks like
+    public String getTabTotal() {
+        String str = tableTab.calculateTotal();
+    }
     //the tab should include:
     //each items name and its price
     //the total of the bill, and tax. 
