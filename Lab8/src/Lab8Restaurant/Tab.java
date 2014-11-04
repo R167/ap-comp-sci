@@ -32,7 +32,7 @@ public class Tab {
     public String toString() {
         StringBuilder str = new StringBuilder();
         for (Item item : items) str.append(item.toString()).append("\n");
-        return str.toString().replace("\n\\Z", "");
+        return str.toString();
     }
 
     //calculateTotal

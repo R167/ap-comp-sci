@@ -38,7 +38,7 @@ public class Item {
     }
     
     public String toString() {
-        return name + ": $" + price;
+        return String.format("%s : $%.02f", name, price);
     }
 
     //getters and setters for each of the variables

@@ -38,18 +38,27 @@ public class Restaurant {
                     } else if (userInput == 1) {
                         // call function to seat local party
                     } else if (userInput == 2) {
-                        // call function to add order to a table
+                        int table = userInTable(readOption);
+                        System.out.print("Dish being ordered: ");
+                        String order = readOption.next();
+                        System.out.print("Price of dish: ");
+                        double price = readOption.nextDouble();
+                        addOrderToTable(table, order, price);
                     } else if (userInput == 3) {
-                        // call function to see table's order
+                        displayTableOrders(userInTable(readOption));
                     } else if (userInput == 4) {
-                        // call function to calculate the check for customer
+                        System.out.println(getTabTotalForTable(userInTable(readOption)));
                     } else if (userInput == 5) {
-                        
+                        setTableEmpty(userInTable(readOption));
                     } else if (userInput == 6) {
                         System.out.println("Empty Tables: " + getTablesAvailable());
                     }
                 } catch (java.util.InputMismatchException err) {
-                    System.out.println("Invalid input!");
+                    System.out.print("Invalid input! '");
+                    System.out.print(readOption.next());
+                    System.out.println("' is not valid!");
+                } catch (java.util.NoSuchElementException err) {
+                    System.out.println("No such table");
                 }
             }
         } finally {
@@ -91,7 +100,7 @@ public class Restaurant {
     private String getTablesAvailable() {
         StringBuilder str = new StringBuilder();
         for (int i = 1; i <= 3; i++) {
-            if (tableByNumber(i).isTableEmpty()) str.append("Table " + i + ", ");
+            if (tableEmpty(i)) str.append("Table " + i + ", ");
         }
         return str.toString().replace(", $", "").replace("^$", "There are no empty tables.");
     }
@@ -105,16 +114,24 @@ public class Restaurant {
     private void displayTableOrders(int tableNum) {
         tableByNumber(tableNum).displayTableOrders();
     }
+    
+    private int userInTable(Scanner scan) {
+        System.out.print("Please enter a table number: ");
+        return scan.nextInt();
+    }
 
     // getTabTotalForTable(int tableNum)
+    private String getTabTotalForTable(int tableNum) {
+        return tableByNumber(tableNum).getTabTotal();
+    }
 
-    private Table tableByNumber(int tableNum) {
+    private Table tableByNumber(int tableNum) throws java.util.NoSuchElementException {
         switch (tableNum) {
         case 1: return table1;
         case 2: return table2;
         case 3: return table3;
+        default: throw new java.util.NoSuchElementException();
         }
-        return new Table();
     }
 
 }

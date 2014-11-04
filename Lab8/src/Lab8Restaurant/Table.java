@@ -35,7 +35,18 @@ public class Table {
 
     //getTabTotal() - return string of what tab looks like
     public String getTabTotal() {
-        String str = tableTab.calculateTotal();
+        double subtotal = RestaurantUtility.calculateTotal(tableTab);
+        double tax = RestaurantUtility.calculateTax(0.1, subtotal);
+        double total = subtotal + tax;
+        StringBuilder str = new StringBuilder();
+        str.append(tableTab.toString());
+        str.append(String.format("Subotal: $%.02f", subtotal));
+        str.append(String.format("\nTotal: $%.02f", total));
+        for (int i = 10; i < 25; i += 5) {
+            double tip = RestaurantUtility.calculateTip(i, subtotal);
+            str.append(String.format("\n%d%% tip: $%.02f New Total: $%.02f", i, tip, total + tip));
+        }
+        return str.toString();
     }
     //the tab should include:
     //each items name and its price
