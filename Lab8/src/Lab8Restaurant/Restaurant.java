@@ -10,7 +10,6 @@ public class Restaurant {
     private Table table1;
     private Table table2;
     private Table table3;
-    private int numTableAvailable;
 
     /*
      * MemberFunctions
@@ -36,7 +35,10 @@ public class Restaurant {
                     if (userInput == -1) {
                         return;
                     } else if (userInput == 1) {
-                        // call function to seat local party
+                        int table = userInTable(readOption);
+                        System.out.print("People to seat: ");
+                        int count = readOption.nextInt();
+                        setTableOccupied(table, count);
                     } else if (userInput == 2) {
                         int table = userInTable(readOption);
                         System.out.print("Dish being ordered: ");
@@ -57,8 +59,8 @@ public class Restaurant {
                     System.out.print("Invalid input! '");
                     System.out.print(readOption.next());
                     System.out.println("' is not valid!");
-                } catch (java.util.NoSuchElementException err) {
-                    System.out.println("No such table");
+                } catch (InvalidValueException err) {
+                    System.out.println(err.getMessage());
                 }
             }
         } finally {
@@ -77,41 +79,40 @@ public class Restaurant {
         table1 = new Table();
         table2 = new Table();
         table3 = new Table();
-        numTableAvailable = 3;
     }
 
     // tableEmpty(int tableNum)
-    private boolean tableEmpty(int tableNum) {
+    private boolean tableEmpty(int tableNum) throws InvalidValueException {
         return tableByNumber(tableNum).isTableEmpty();
     }
 
     // setTableEmpty(int tableNum)
-    private void setTableEmpty(int tableNum) {
+    private void setTableEmpty(int tableNum) throws InvalidValueException {
         tableByNumber(tableNum).setTableEmpty();
     }
 
     // setTableOccupied(int tableNum, int customers)
-    private void setTableOccupied(int tableNum, int customers) {
+    private void setTableOccupied(int tableNum, int customers) throws InvalidValueException {
         tableByNumber(tableNum).setTableOccupied(customers);
     }
 
     // getTablesAvailable()
     // return a string with the names of the tables that are empty.
-    private String getTablesAvailable() {
+    private String getTablesAvailable() throws InvalidValueException {
         StringBuilder str = new StringBuilder();
         for (int i = 1; i <= 3; i++) {
             if (tableEmpty(i)) str.append("Table " + i + ", ");
         }
-        return str.toString().replace(", $", "").replace("^$", "There are no empty tables.");
+        return str.toString().replaceAll(", $", "").replaceAll("^$", "There are no empty tables.");
     }
 
     // addOrderToTable(int tableNum, String itemName, double price)
-    private void addOrderToTable(int tableNum, String itemName, double price) {
+    private void addOrderToTable(int tableNum, String itemName, double price) throws InvalidValueException {
         tableByNumber(tableNum).addOrderToTable(itemName, price);
     }
 
     // displayTableOrders(int tableNum) - void
-    private void displayTableOrders(int tableNum) {
+    private void displayTableOrders(int tableNum) throws InvalidValueException {
         tableByNumber(tableNum).displayTableOrders();
     }
     
@@ -121,16 +122,16 @@ public class Restaurant {
     }
 
     // getTabTotalForTable(int tableNum)
-    private String getTabTotalForTable(int tableNum) {
+    private String getTabTotalForTable(int tableNum) throws InvalidValueException {
         return tableByNumber(tableNum).getTabTotal();
     }
 
-    private Table tableByNumber(int tableNum) throws java.util.NoSuchElementException {
+    private Table tableByNumber(int tableNum) throws InvalidValueException {
         switch (tableNum) {
         case 1: return table1;
         case 2: return table2;
         case 3: return table3;
-        default: throw new java.util.NoSuchElementException();
+        default: throw new InvalidValueException("No such table!");
         }
     }
 

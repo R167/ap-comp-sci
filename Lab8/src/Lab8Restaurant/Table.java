@@ -14,11 +14,18 @@ public class Table {
         return tableEmpty;
     }
     
+    public int getNumSeatedCustomers() {
+        return numSeatedCustomers;
+    }
+
     public void setTableEmpty() {
         this.tableEmpty = true;
+        this.numSeatedCustomers = 0;
     }
     
-    public void setTableOccupied(int customers) {
+    public void setTableOccupied(int customers) throws InvalidValueException {
+        if (customers > numSeatsAvailable || customers < 0)
+            throw new InvalidValueException("Invalid number of customers!");
         this.tableEmpty = false;
         this.numSeatedCustomers = customers;
     }
