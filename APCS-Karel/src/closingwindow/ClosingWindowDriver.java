@@ -4,7 +4,7 @@
  * Author: Winston Durand
  * Modified: Nov 5, 2014
  **********************************/
-package closingpackage;
+package closingwindow;
 
 import kareltherobot.*;
 import java.awt.Color;
@@ -14,7 +14,8 @@ import java.awt.Color;
  */
 public class ClosingWindowDriver implements Directions {
     public static void main(String args[]) {
-        Robot karel = new Robot(7, 5, East, 9);
+        Robot karel = new ClosingWindow(7, 5, East, 9);
+        karel.run();
         karel.turnOff();
     }
 

@@ -15,7 +15,8 @@ import java.awt.Color;
 
 public class DangerousTaskDriver implements Directions {
     public static void main(String args[]) {
-        Robot karel = new Robot(5, 5, North, 0);
+        Robot karel = new DangerousTask(5, 5, North, 0);
+        karel.run();
         karel.turnOff();
     }
 

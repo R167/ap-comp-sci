@@ -16,8 +16,9 @@ public class TreasureHuntDriver implements Directions {
     public static void main(String args[]) {
 
         // Your code goes below here:
-        Robot karel = new Robot(2, 2, North, 0);
-        karel.setVisible(false);
+        Robot karel = new TreasureHunt(2, 2, North, 0);
+        karel.run();
+//        karel.setVisible(false);
         karel.turnOff();
     }
 
