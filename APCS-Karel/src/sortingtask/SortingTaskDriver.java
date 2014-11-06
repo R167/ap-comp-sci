@@ -21,18 +21,19 @@ public class SortingTaskDriver implements Directions {
         stackBot.turnOff();
 
         // Your code goes here:
-        Robot karel = new Robot(8, 2, West, 0);
+        Robot karel = new SortingTask(8, 2, West, 0);
+        karel.run();
         karel.turnOff();
     }
 
     static {
         World.reset();
-        // World.readWorld("worlds/fig6-31.kwld");
-        // World.readWorld("worlds/sortsolution.kwld");
+        World.readWorld("worlds/fig6-31.kwld");
+        // World.readWorld("worlds/sortsolution.kwld"); // Solution
         World.setBeeperColor(Color.black);
         World.setStreetColor(Color.gray);
         World.setNeutroniumColor(Color.black);
-        World.setDelay(2);
+        World.setDelay(5);
         World.setVisible(true);
     }
 }
