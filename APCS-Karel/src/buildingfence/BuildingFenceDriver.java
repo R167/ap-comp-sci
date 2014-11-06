@@ -19,7 +19,8 @@ public class BuildingFenceDriver implements Directions {
     static int numBeepers = 2 * (fenceLength + fenceHeight) + 4;
 
     public static void main(String args[]) {
-        Robot karel = new Robot(1, 1, East, 0);
+        Robot karel = new BuildingFence(1, 1, North, 0);
+        karel.run();
         karel.turnOff();
     }
 
