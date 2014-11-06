@@ -14,7 +14,8 @@ import java.awt.Color;
  */
 public class RepairQuadDriver implements Directions {
     public static void main(String args[]) {
-        Robot karel = new Robot(1, 1, East, -1);
+        Robot karel = new RepairQuad(1, 1, East, -1);
+        karel.run();
         karel.turnOff();
     }
 
