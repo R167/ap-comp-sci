@@ -19,5 +19,23 @@ public class Library {
         this.name = libraryName;
     }
     
-    public createBook(String bookTitle, String bookAuthor))
+    public void createBook(String bookTitle, String bookAuthor) {
+        books.put(bookTitle.toLowerCase(), new Book(bookTitle, bookAuthor));
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public String getBookList() {
+        StringBuilder str = new StringBuilder();
+        for (Book book : books.values()) {
+            str.append(book.getTitle()).append("\n");
+        }
+        return str.toString();
+    }
+    
+    public String findBook(String title) {
+        return books.getOrDefault(title.toLowerCase(), new Book("N/A", "N/A")).toString();
+    }
 }

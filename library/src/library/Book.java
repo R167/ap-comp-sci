@@ -13,7 +13,15 @@ public class Book {
     private String author = null;
     private String title = null;
     
+    public Book(String title, String author) {
+        super();
+        this.author = author;
+        this.title = title;
+    }
     
+    public String toString() {
+        return String.format("Title: %s | Author: %s", title, author);
+    }
     
     public String getAuthor() {
         return author;
