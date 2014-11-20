@@ -19,11 +19,13 @@ public class AI extends Player {
     
     public boolean run(int scoreToBeat) {
         while (getHardTotal() < HIT) {
+            /*
             if (getTotal() <= scoreToBeat) {
                 hit();
             } else {
                 break;
-            }
+            } */
+            hit();
         }
         return !isBusted() && getTotal() > scoreToBeat;
     }

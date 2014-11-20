@@ -20,7 +20,7 @@ public class Deck {
                 cards.add(new Card(suit, cardNum + 2));
             }
         }
-        Collections.shuffle(cards);
+        shuffle();
     }
     
     public Card nextCard() {
@@ -29,5 +29,9 @@ public class Deck {
     
     public int size() {
         return cards.size();
+    }
+    
+    public void shuffle() {
+        Collections.shuffle(cards);
     }
 }
