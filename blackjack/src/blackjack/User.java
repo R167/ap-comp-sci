@@ -12,28 +12,27 @@ import java.util.Scanner;
  * @author Winston Durand
  */
 public class User extends Player {
-    public User(Deck deck) {
+    private Scanner scan;
+
+    public User(Deck deck, Scanner scan) {
         super(deck);
+        this.scan = scan;
     }
 
     public boolean run() {
-        Scanner scan = new Scanner(System.in);
-        try {
-            while (!isBusted() && !isBlackjack()) {
-                printStatus();
-                System.out.print("Would you like to hit or stand: ");
-                char selection = scan.nextLine().toLowerCase().charAt(0);
-                if (selection == 'h') {
-                    hit();
-                } else if (selection == 's') {
-                    break;
-                } else {
-                    System.out.println("Invalid choice!");
-                    continue;
-                }
+        while (!isBusted() && !isBlackjack()) {
+            printStatus();
+            System.out.print("Would you like to hit or stand: ");
+            char selection = scan.nextLine().toLowerCase().charAt(0);
+            if (selection == 'h') {
+                hit();
+            } else if (selection == 's') {
+                break;
+            } else {
+                System.out.println("Invalid choice!");
+                continue;
             }
-        } finally {
-            scan.close();
+            System.out.println();
         }
         if (isBusted()) {
             System.out.printf("You busted at %d!\n", getTotal());

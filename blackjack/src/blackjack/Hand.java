@@ -87,4 +87,10 @@ public class Hand {
             return false;
         }
     }
+    
+    public Card[] discard() {
+        Card[] discardPile = new Card[cards.size()];
+        discardPile = cards.toArray(discardPile);
+        return discardPile;
+    }
 }

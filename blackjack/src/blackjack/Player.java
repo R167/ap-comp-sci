@@ -52,4 +52,8 @@ public abstract class Player {
     public Card getFaceUp() {
         return hand.getFaceUp();
     }
+    
+    public void discard() {
+        deck.returnCards(hand.discard());
+    }
 }
