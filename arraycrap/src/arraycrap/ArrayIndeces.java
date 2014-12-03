@@ -3,7 +3,7 @@ package arraycrap;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ArrayCrap {
+public class ArrayIndeces {
     public static void main(String[] args) {
         char[] letters = new char[26];
         for (char i = 'A'; i <= 'Z'; i++) {
