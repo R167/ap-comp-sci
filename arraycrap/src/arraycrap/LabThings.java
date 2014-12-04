@@ -39,6 +39,8 @@ public class LabThings {
                     break;
                 } catch(java.util.InputMismatchException error) {
                     System.out.println(scan.next() + " is invalid input. Please try again.");
+                } catch(NegativeArraySizeException error) {
+                    System.out.println("Array size must be positive.");
                 }
             } 
         } finally {
