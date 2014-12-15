@@ -32,10 +32,12 @@ public final class Utilities {
             WORDLIST = words.toArray(new String[words.size()]);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Crapus. where is the words.txt file?!");
+            System.out.println("Crapus. Where is the words.txt file?!");
             System.exit(1);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Crapus. Something broke?!");
+            System.exit(1);
         }
         
     }
