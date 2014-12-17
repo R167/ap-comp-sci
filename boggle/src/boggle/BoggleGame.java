@@ -13,6 +13,8 @@ package boggle;
 public class BoggleGame {
 
     /**
+     * Runs the whole show
+     * 
      * @param args
      */
     public static void main(String[] args) {

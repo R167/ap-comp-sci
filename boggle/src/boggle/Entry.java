@@ -16,8 +16,10 @@ public final class Entry {
     private int points = 0;
 
     public Entry(String w, char[] letters) {
-        word = sanatize(w);
+        word = Words.sanatize(w);
+        // calculates the point value
         if (isValid(letters)) {
+            // point values as according to boggle rules
             switch (word.length()) {
             case 3: case 4:
                 points = 1;
@@ -38,33 +40,40 @@ public final class Entry {
                 break;
             }
         } else if (word.length() < 3 || word.length() > 8) {
+            // invalid word handle case
             points = 0;
         } else {
             points = -2;
         }
     }
 
+    /**
+     * checks if the word is valid according to letters
+     * @param letters array of valid chars
+     * @return whether word is from letters in the array
+     */
     private boolean isValid(char[] letters) {
+        // creates a copy to preserve the original array
         char[] copy = new char[letters.length];
         for (int i = 0; i < letters.length; i++) copy[i] = letters[i];
+        // checks that inclusion of letters in the char array
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             boolean found = false;
             for (i = 0; i < letters.length; i++) {
                 if (copy[i] == c) {
+                    // "deletes" letter from the array
                     copy[i] = 0;
                     found = true;
                     break;
                 }
             }
+            // returns false as soon as there is a non matching letter
             if (!found) return false;
         }
 
+        // checks if the letter is in the word list
         return Words.hasWord(word) >= 0;
-    }
-
-    private String sanatize(String str) {
-        return str.trim().toLowerCase();
     }
 
     public int getEarned() {
