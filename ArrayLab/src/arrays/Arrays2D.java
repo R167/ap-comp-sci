@@ -65,6 +65,10 @@ public class Arrays2D extends ArrayMod {
     }
 }
 
+/**
+ * Define magic...
+ * @author wmd
+ */
 class CustomLogic {
     public boolean call(int param) {
         return true;
