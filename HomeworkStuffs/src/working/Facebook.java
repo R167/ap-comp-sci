@@ -6,7 +6,6 @@
  **********************************/
 package working;
 
-import ja
 
 /**
  * @author Winston Durand

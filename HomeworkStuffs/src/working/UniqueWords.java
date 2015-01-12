@@ -22,31 +22,43 @@ public class UniqueWords {
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        
+
         try {
             System.out.print("Please enter some text: ");
             String str = scan.nextLine();
-            System.out.println(cheaty(str));
+            List<String> list = new ArrayList<String>();
+            for (String word : str.split("\\s+")) {
+                list.add(word);
+            }
+            System.out.println(list);
+            System.out.println(list);
         } finally {
             scan.close();
         }
     }
-    
-    public static boolean cheaty(String str) {
-        List<String> list = new ArrayList<String>();
-        for (String word : str.split("\\s+")) {
-            list.add(word);
-        }
-        
+
+    public static boolean cheaty(List<String> list) {
         Set<String> words = new HashSet<String>();
-        
+
         for (String word : list) {
             words.add(word);
         }
-        
+
         return words.size() != list.size();
     }
-    
+
+    public static boolean dupe(List<String> list) {
+        for (int i = 0; i < (list.size() - 1); i++) {
+            for (int j = (i + 1); j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     // STDIN.get.chomp.split(/\s/).tap{|w|puts w.uniq==w}
 
 }
