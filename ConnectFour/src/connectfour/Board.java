@@ -35,7 +35,33 @@ public class Board {
         return board[col][row];
     }
 
-    public Color findWinner() {
+    public String toString() {
+        StringBuilder ret = new StringBuilder(board.length * board[0].length * 5);
+        seperate(ret, board.length);
+        for (int j = board[0].length - 1; j >= 0; j--) {
+            ret.append('|');
+            for (int i = 0; i < board.length; i++) {
+                ret.append(board[i][j].getChar()).append('|');
+            }
+            ret.append('\n');
+        }
+        seperate(ret, board.length);
+        ret.append(' ');
+        for (int i = 0; i < board.length; i++) {
+            ret.append(i).append(' ');
+        }
+        return ret.toString();
+    }
+
+    private void seperate(StringBuilder str, int times) {
+        str.append("+");
+        for (int i = 0; i < times; i++) {
+            str.append("-+");
+        }
+        str.append('\n');
+    }
+
+    public Color getWinner() {
         Color col;
         if ((col = horizontalWinner()).isNotNone()) {
             return col;
@@ -122,5 +148,9 @@ public class Board {
             }
         }
         return Color.NONE;
+    }
+
+    public int spots() {
+        return board[0].length * board.length;
     }
 }
