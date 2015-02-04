@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class Driver {
 
     /**
+     * Main calling function for running the code
+     * 
      * @param args
      */
     public static void main(String[] args) {
@@ -21,13 +23,13 @@ public class Driver {
     }
 
     /**
-     * kind of just removes all of the logic from the main function
+     * Runtime logic for the game
      */
     public static void logic() {
         Scanner scan = new Scanner(System.in);
 
         try {
-            do {
+            do {                
                 Board board = new Board();
 
                 Color winner = Color.NONE;
@@ -36,27 +38,10 @@ public class Driver {
                 int move = 0;
 
                 for (; move < board.spots() && winner.isNone(); move++) {
-                    boolean cont = true;
-
                     System.out.println(board.toString());
                     System.out.printf("It is player %d's turn.\n", move % 2 + 1);
 
-                    while (cont) {
-                        System.out.printf("Column to play %s on: ", player.getChar());
-                        int num = 0;
-                        try {
-                            num = scan.nextInt();
-                            if (num > 6) {
-                                System.out.printf("%d is not a valid number!\n", num);
-                            } else if (board.dropColumn(num, player)) {
-                                cont = false;
-                            } else {
-                                System.out.println("That column is full. Please try another.");
-                            }
-                        } catch (java.util.InputMismatchException e) {
-                            System.out.printf("%s is not a valid number!\n", scan.next());
-                        }
-                    }
+                    playerTurn(scan, player, board);
 
                     player = player.other();
                     winner = board.getWinner();
@@ -78,4 +63,24 @@ public class Driver {
         }
     }
 
+    public static void playerTurn(Scanner scan, Color player, Board board) {
+        boolean cont = true;
+        
+        while (cont) {
+            System.out.printf("Column to play %s on: ", player.getChar());
+            int num = 0;
+            try {
+                num = scan.nextInt();
+                if (num > 6) {
+                    System.out.printf("%d is not a valid number!\n", num);
+                } else if (board.dropColumn(num, player)) {
+                    cont = false;
+                } else {
+                    System.out.println("That column is full. Please try another.");
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.printf("%s is not a valid number!\n", scan.next());
+            }
+        }
+    }
 }

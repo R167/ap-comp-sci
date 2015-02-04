@@ -75,37 +75,40 @@ public class Board {
     }
 
     private Color diagnolWinner() {
+        Color col;
         for (int i = 0; i <= board.length - 4; i++) {
-            for (int j = 0; j <= board[0].length - 4; j++) {
-                Color current = board[i][j];
-                if (current.isNotNone()) {
-                    boolean success = true;
-                    for (int k = 1; k < 4; k++) {
-                        if (board[i + k][j + k] != current) {
-                            success = false;
-                            break;
-                        }
-                    }
-                    if (success) {
-                        return current;
-                    }
-                }
+            if ((col = genericDiagnol(i, 1)).isNotNone()) {
+                return col;
             }
         }
         for (int i = board.length - 1; i >= board.length - 4; i--) {
-            for (int j = 0; j <= board[0].length - 4; j++) {
-                Color current = board[i][j];
-                if (current.isNotNone()) {
-                    boolean success = true;
-                    for (int k = 1; k < 4; k++) {
-                        if (board[i - k][j + k] != current) {
-                            success = false;
-                            break;
-                        }
+            if ((col = genericDiagnol(i, -1)).isNotNone()) {
+                return col;
+            }
+        }
+        return Color.NONE;
+    }
+    
+    /**
+     * Keeps code DRY
+     * 
+     * @param i column to look in
+     * @param direction offset type thing
+     * @return winners within the 
+     */
+    private Color genericDiagnol(int i, int direction) {
+        for (int j = 0; j <= board[0].length - 4; j++) {
+            Color current = board[i][j];
+            if (current.isNotNone()) {
+                boolean success = true;
+                for (int k = 1; k < 4; k++) {
+                    if (board[i + k * direction][j + k] != current) {
+                        success = false;
+                        break;
                     }
-                    if (success) {
-                        return current;
-                    }
+                }
+                if (success) {
+                    return current;
                 }
             }
         }
