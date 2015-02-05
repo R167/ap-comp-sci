@@ -35,25 +35,32 @@ public class Board {
         return board[col][row];
     }
 
+    /**
+     * Generates and ASCII art version of the board to be printed out
+     */
     public String toString() {
         StringBuilder ret = new StringBuilder(board.length * board[0].length * 5);
-        seperate(ret, board.length);
+        // Prints the top separator
+        separate(ret, board.length);
         for (int j = board[0].length - 1; j >= 0; j--) {
             ret.append('|');
             for (int i = 0; i < board.length; i++) {
+                // Puts the Piece's char to the board
                 ret.append(board[i][j].getChar()).append('|');
             }
             ret.append('\n');
         }
-        seperate(ret, board.length);
+        // Prints the bottom separator
+        separate(ret, board.length);
         ret.append(' ');
+        // Prints the numbers of the column
         for (int i = 0; i < board.length; i++) {
             ret.append(i).append(' ');
         }
         return ret.toString();
     }
 
-    private void seperate(StringBuilder str, int times) {
+    private void separate(StringBuilder str, int times) {
         str.append("+");
         for (int i = 0; i < times; i++) {
             str.append("-+");
@@ -61,6 +68,11 @@ public class Board {
         str.append('\n');
     }
 
+    /**
+     * Figures out the winner for the game
+     * 
+     * @return Color of the winner or NONE
+     */
     public Color getWinner() {
         Color col;
         if ((col = horizontalWinner()).isNotNone()) {
@@ -74,6 +86,11 @@ public class Board {
         }
     }
 
+    /**
+     * Looks for diagnol winners
+     * 
+     * @return Color of the winner or NONE
+     */
     private Color diagnolWinner() {
         Color col;
         for (int i = 0; i <= board.length - 4; i++) {
@@ -115,6 +132,11 @@ public class Board {
         return Color.NONE;
     }
 
+    /**
+     * Looks for horizontal winners
+     * 
+     * @return Color of the winner or NONE
+     */
     private Color horizontalWinner() {
         for (int i = 0; i < board[0].length; i++) {
             Color current = Color.NONE;
@@ -134,6 +156,11 @@ public class Board {
         return Color.NONE;
     }
 
+    /**
+     * Looks for vertical winners
+     * 
+     * @return Color of the winner or NONE
+     */
     private Color verticalWinner() {
         for (int i = 0; i < board.length; i++) {
             Color current = Color.NONE;
