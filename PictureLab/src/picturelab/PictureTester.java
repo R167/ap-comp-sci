@@ -48,6 +48,13 @@ public class PictureTester {
         caterpillar.mirrorVertical();
         caterpillar.explore();
     }
+    
+    private static void testMirrorVerticalRightToLeft() {
+        Picture caterpillar = new Picture("caterpillar.jpg");
+        caterpillar.explore();
+        caterpillar.mirrorVerticalRTL();
+        caterpillar.explore();
+    }
 
     /** Method to test mirrorTemple */
     private static void testMirrorTemple() {
@@ -90,8 +97,11 @@ public class PictureTester {
 //         testKeepOnlyGreen();
 //         testNegate();
 //         testGrayscale();
-         testFixUnderwater();
+//         testFixUnderwater();
 //        testMirrorVertical();
+//        testMirrorVerticalRightToLeft();
+//        testMirrorHorizontalTTB();
+//        testMirrorHorizontalBTT();
 //        testMirrorTemple();
         // testMirrorArms();
         // testMirrorGull();
@@ -106,5 +116,17 @@ public class PictureTester {
         // testSetRedToHalfValueInTopHalf();
         // testClearBlueOverValue(200);
         // testGetAverageForColumn(0);
+    }
+
+    private static void testMirrorHorizontalTTB() {
+        Picture caterpillar = new Picture("caterpillar.jpg");
+        caterpillar.mirrorHorizontalTTB();
+        caterpillar.explore(); 
+    }
+    
+    private static void testMirrorHorizontalBTT() {
+        Picture caterpillar = new Picture("caterpillar.jpg");
+        caterpillar.mirrorHorizontalBTT();
+        caterpillar.explore(); 
     }
 }
