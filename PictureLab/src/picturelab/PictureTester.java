@@ -63,6 +63,13 @@ public class PictureTester {
         temple.mirrorTemple();
         temple.explore();
     }
+    
+    private static void testMirrorArms() {
+        Picture temple = new Picture("snowman.jpg");
+        temple.explore();
+        temple.mirrorArms();
+        temple.explore();
+    }
 
     /** Method to test the collage method */
     private static void testCollage() {
@@ -103,7 +110,7 @@ public class PictureTester {
 //        testMirrorHorizontalTTB();
 //        testMirrorHorizontalBTT();
 //        testMirrorTemple();
-        // testMirrorArms();
+         testMirrorArms();
         // testMirrorGull();
         // testMirrorDiagonal();
 //        testCollage();
